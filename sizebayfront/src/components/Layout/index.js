@@ -1,8 +1,6 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-
+import { BrowserRouter as Router } from 'react-router-dom';
 import { ItemProvider } from '../../contexts/ItemContext';
-
 import Header from '../Header';
 import SearchBox from '../SearchBox';
 import Routes from '../../Routes';
@@ -10,11 +8,11 @@ import Routes from '../../Routes';
 export default function Layout() {
   return (
     <ItemProvider>
-      <BrowserRouter>
+      <Router>
         <Header />
         <SearchBox />
         <Routes />
-      </BrowserRouter>
+      </Router>
     </ItemProvider>
   );
 }

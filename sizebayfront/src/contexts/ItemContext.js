@@ -6,7 +6,7 @@ export const itemContext = createContext();
 export function ItemProvider(props) {
   const [itemsCollection, setItemsCollection] = useState([]);
 
-  const [filterControl, setFilterControl] = useState('default');
+  const [filterControl, setFilterControl] = useState({ clean: true, done: false, pending: false });
   const [isSearch, setIsSearch] = useState(false);
   const [searchText, setSearchText] = useState('');
 
@@ -36,18 +36,14 @@ export function ItemProvider(props) {
   }
 
   function handleClickDone() {
-    if (filterControl !== 'default' && filterControl !== 'pending') {
-      setFilterControl('default');
-    } else {
-      setFilterControl(prevState => (prevState !== 'done') ? 'done' : prevState);
+    if (filterControl.clean && !filterControl.done && !filterControl.pending) {
+      setFilterControl({ clean: false, done: true, pending: false });
     }
   }
 
   function handleClickPending() {
-    if (filterControl !== 'default' && filterControl !== 'done') {
-      setFilterControl('default');
-    } else {
-      setFilterControl(prevState => (prevState !== 'pending') ? 'pending' : prevState);
+    if (filterControl.clean && !filterControl.done && !filterControl.pending) {
+      setFilterControl({ clean: false, done: false, pending: true });
     }
   }
 

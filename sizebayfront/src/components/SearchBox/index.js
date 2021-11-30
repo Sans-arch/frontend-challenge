@@ -6,7 +6,14 @@ import { itemContext } from '../../contexts/ItemContext';
 import { Container, DoneButton, Form, PendingButton } from './styles';
 
 export default function SearchBox() {
-  const { filterControl, handleClickDone, handleClickPending, handleIsSearch, searchText, handleSearchText } = useContext(itemContext);
+  const {
+    filterControl,
+    handleClickDone,
+    handleClickPending,
+    handleIsSearch,
+    searchText,
+    handleSearchText
+  } = useContext(itemContext);
 
   function handleSearch(e) {
     handleSearchText(e.target.value);
@@ -21,7 +28,7 @@ export default function SearchBox() {
   return (
     <Container>
       <nav>
-        <Link to={filterControl === 'default' ? '/done' : '/'}>
+        <Link to={filterControl.done ? '/done' : '/'}>
           <DoneButton
             onClick={handleClickDone}
             status={filterControl}
@@ -46,7 +53,7 @@ export default function SearchBox() {
           name="searchBar"
           placeholder="Search items"
           value={searchText}
-          onChange={e => handleSearch(e)}
+          onChange={handleSearch}
         />
       </Form>
     </Container>
