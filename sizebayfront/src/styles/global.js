@@ -10,10 +10,10 @@ export default createGlobalStyle`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 95vw;
     margin: auto;
-    font-family: "Roboto", sans-serif;
-    background: #fff;
     box-sizing: border-box;
+    width: 50%;
+    font-family: "Roboto", sans-serif;
+    background: #555555;
   }
 `;
